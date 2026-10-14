@@ -33,7 +33,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 10%, rgba(157, 0, 255, 0.1) 0%, transparent 40%),
+                radial-scale(circle at 10% 10%, rgba(157, 0, 255, 0.1) 0%, transparent 40%),
                 radial-gradient(circle at 90% 90%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
             background-attachment: fixed;
             min-height: 100vh;
@@ -121,15 +121,15 @@
             padding: 4px;
             background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
             box-shadow: 0 0 35px rgba(0, 255, 102, 0.4);
+            overflow: hidden; /* Taşmayı kesin olarak engeller */
         }
 
         .avatar-box img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover;
-            object-position: center top;
-            background: #0a0f1e;
+            object-fit: contain; /* Fotoğrafı kesmeden tam sığdırır */
+            background: #000;
         }
 
         .hero h1 {
@@ -476,7 +476,7 @@
         <!-- HERO / KİŞİSEL PROFİL -->
         <section class="hero">
             <div class="avatar-box">
-                <!-- GitHub'a yüklediğin 65058.jpg dosyasına doğrudan bağlanır -->
+                <!-- Fotoğraf tam oturtuldu -->
                 <img src="./65058.jpg" alt="Yusuf Alper">
             </div>
             <h1>Yusuf Alper</h1>
