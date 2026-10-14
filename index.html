@@ -1,1 +1,667 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusuf Alper | Embedded Security & R&D Executive Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --accent-blue: #0284c7;
+            --accent-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-elevation: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.05);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Müzik Widget'ı */
+        .music-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-btn {
+            background: var(--accent-dark);
+            border: none;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .music-btn:hover {
+            background: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .music-info span {
+            display: block;
+        }
+
+        .music-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-dark);
+        }
+
+        .music-status {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Ana Konteyner */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Hero / Profil Bölümü */
+        .hero {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-elevation);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .avatar-box {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-dark));
+            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.2);
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-dark);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .terminal-badge {
+            display: inline-block;
+            background: #f1f5f9;
+            border: 1px solid var(--border-color);
+            color: var(--accent-blue);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            text-align: justify;
+        }
+
+        /* Sosyal Butonlar */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .socials a {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            color: var(--accent-dark);
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            background: var(--accent-dark);
+            color: #ffffff;
+            border-color: var(--accent-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+        }
+
+        /* Kartlar ve Izgara Yapısı */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent-dark);
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 12px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: var(--shadow-elevation);
+            margin-bottom: 40px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media(max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero { padding: 40px 20px; }
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent-dark);
+        }
+
+        .card h3 i {
+            color: var(--accent-blue);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Dil Seviye Bar Sistemi */
+        .lang-progress {
+            margin-top: 20px;
+        }
+
+        .lang-bar-item {
+            margin-bottom: 15px;
+        }
+
+        .lang-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: #f1f5f9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-dark));
+            border-radius: 4px;
+        }
+
+        /* Proje Galerisi */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-item {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+
+        @media(max-width: 768px) {
+            .project-item { grid-template-columns: 1fr; }
+        }
+
+        .project-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #e2e8f0;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .project-item:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay-hint {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            gap: 8px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .project-item:hover .project-overlay-hint {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-content h4 {
+            font-size: 1.35rem;
+            color: var(--accent-dark);
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 0.96rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        /* Detay Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 28px;
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            animation: modalPop 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #f1f5f9;
+            border: none;
+            color: var(--text-muted);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            background: var(--accent-dark);
+            color: #fff;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            background: #e2e8f0;
+        }
+
+        .modal-title {
+            font-size: 1.7rem;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+        }
+
+        .modal-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.85;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Etiketler */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Müzik Widget'ı -->
+    <div class="music-widget">
+        <button class="music-btn" id="playTrigger" onclick="toggleMusic()">
+            <i class="fa-solid fa-play" id="playSymbol"></i>
+        </button>
+        <div class="music-info">
+            <span class="music-title">Executive Ambient</span>
+            <span class="music-status" id="musicLabel">Müziği Başlat</span>
+        </div>
+        <audio id="siteAudio" loop>
+            <source src="https://www.bensound.com/bensound-music/bensound-cyberpunk.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="container">
+        
+        <!-- HERO / KİŞİSEL PROFİL -->
+        <section class="hero">
+            <div class="avatar-box">
+                <!-- 65058.jpg dosyan GitHub'da yan yana durduğu sürece tam oturur -->
+                <img src="./65058.jpg" alt="Yusuf Alper" onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400'">
+            </div>
+            <h1>Yusuf Alper</h1>
+            <div class="terminal-badge">> root@yusufalper:~# security_engineer & r&d_specialist</div>
+            <p>
+                Bursa doğumlu, Afyonkarahisar'da akademik kariyerini sürdüren 19 yaşında vizyoner bir Ar-Ge ve siber güvenlik geliştiricisiyim. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde (İngilizce hazırlık sınıfı) eğitim alarak küresel ticari dinamikleri, finansal sistemleri ve stratejik planlamayı derinlemesine inceliyorum. Aynı zamanda kendi laboratuvarımda gömülü sistemler, donanım modifikasyonları, Kali Linux sızma testleri ve radyo frekans (RF) analizleri üzerine ileri düzey mühendislik projeleri yürütüyorum. Klasik ezberlerin ve sıradan kalıpların ötesine geçerek teknolojinin hem yazılımsal hem de donanımsal altyapısını bizzat ellerimle inşa ediyor, her geçen gün çıtayı daha yükseğe taşıyorum.
+            </p>
+            <div class="socials">
+                <a href="https://github.com/YasuoBey32" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <!-- İstediğin özel Instagram bağlantısı -->
+                <a href="https://instagram.com/yyusufalp32?mdxt=cWczNWd6cHE0bm05" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </section>
+
+        <!-- AKADEMİK EĞİTİM & DİL GELİŞİMİ -->
+        <div class="grid-2">
+            <div class="card" style="margin-bottom:0;">
+                <h3><i class="fa-solid fa-graduation-cap"></i> Üniversite & Bölüm Vizyonu</h3>
+                <p>
+                    <strong>Afyon Kocatepe Üniversitesi - Uluslararası Ticaret ve Finansman (İngilizce Hazırlık)</strong><br>
+                    Küresel pazarların işleyişini, uluslararası finans ağlarını ve ekonomik stratejileri kavrama amacıyla akademik hayatıma devam ediyorum. Teknoloji girişimciliği ile finansal okuryazarlığı birleştirerek geleceğin küresel projelerinde kritik roller üstlenmeyi hedefliyorum.
+                </p>
+                <div class="tags">
+                    <span class="tag">Global Ticaret</span>
+                    <span class="tag">Finansal Strateji</span>
+                    <span class="tag">Akademik Ar-Ge</span>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom:0;">
+                <h3><i class="fa-solid fa-language"></i> Dil Gelişimi & Yetkinlikler</h3>
+                <p>
+                    Uluslararası yazılım dökümanlarını, siber güvenlik protokollerini ve global finans kaynaklarını ana dil düzeyinde takip edebilmek adına hazırlık sınıfında yoğun bir dil süreci yönetiyorum. Temel seviyelerden (A1-A2) başlayarak profesyonel akıcılığa (B1 ve üzeri) geçiş adımlarımı disiplinli bir şekilde atıyorum.
+                </p>
+                <div class="lang-progress">
+                    <div class="lang-bar-item">
+                        <div class="lang-info"><span>A1-A2 Temel Altyapı</span><span>Tamamlandı</span></div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="lang-bar-item">
+                        <div class="lang-info" style="margin-top:10px;"><span>B1+ Profesyonel Akıcılık</span><span>Aktif Geliştiriliyor</span></div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SİBER GÜVENLİK VE GÖMÜLÜ SİSTEMLER -->
+        <div class="grid-2" style="margin-top: 40px;">
+            <div class="card" style="margin-bottom:0;">
+                <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik & Kali Linux</h3>
+                <p>
+                    Kali Linux ekosistemini aktif olarak kullanarak sızma testleri (penetration testing), zafiyet analizi ve ağ dinleme senaryoları üzerinde çalışıyorum. Sistemlerin açıklarını erkenden tespit edip kapatma mekanizmaları geliştirerek siber güvenlik alanında üst düzey refleksler kazanıyorum.
+                </p>
+                <div class="tags">
+                    <span class="tag">Kali Linux</span>
+                    <span class="tag">Penetration Testing</span>
+                    <span class="tag">Network Security</span>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom:0;">
+                <h3><i class="fa-solid fa-microchip"></i> Donanım & Gömülü Sistemler</h3>
+                <p>
+                    Mikrodenetleyiciler, RF alıcı-verici modüller ve elektronik devre elemanlarıyla fiziksel Ar-Ge projeleri tasarlıyorum. Yazılımı donanımla buluşturarak gerçek dünya problemlerine akıllı donanımsal çözümler üretiyor ve laboratuvarımda sürekli testler gerçekleştiriyorum.
+                </p>
+                <div class="tags">
+                    <span class="tag">ESP32-S3</span>
+                    <span class="tag">Hardware R&D</span>
+                    <span class="tag">Firmware Flashing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- AKTİF GELİŞTİRDİĞİM PROJELER (ESP32 S3 + BRUCE + CC1101) -->
+        <div class="card" style="margin-top: 40px;">
+            <div class="section-title"><i class="fa-solid fa-code-branch"></i> Aktif Geliştirdiğim Projeler & Donanım Ar-Ge</div>
+            <p style="margin-bottom: 25px;">Kendi laboratuvarımda sıfırdan lehimleyerek, pin bağlantılarını kurarak ve yazılımını yükleyerek bizzat hayata geçirdiğim ana projem. <strong>Detaylı teknik incelemeyi görmek için kartın üzerine tıklayabilirsin:</strong></p>
+            
+            <div class="project-gallery">
+                <!-- Proje Kartı -->
+                <div class="project-item" onclick="openModal('ESP32-S3 Lilygo T-Display + Bruce Firmware + CC1101', 'Bu proje; ESP32-S3 mimarisine sahip Lilygo T-Display renkli OLED geliştirme kartı ile CC1101 Sub-GHz radyo frekans alıcı-verici modülünün kablo/pin entegrasyonu ile sıfırdan inşa edilmiştir. Cihaza özel olarak derlenen Bruce Firmware yazılımı flaşlanarak; Sub-GHz RF sinyal yakalama ve kopyalama (Scan/Copy), radyo frekans spektrum analizi, Wi-Fi test senaryoları ve interaktif OLED menü yönetimi aktif hale getirilmiştir. Tamamen kendi ellerimle kurduğum bu sistem, kablosuz ağlar ve RF frekansları üzerine geliştirdiğim en üst düzey laboratuvar aracıdır.', './65058.jpg')">
+                    <div class="project-img-wrapper">
+                        <!-- Görsel -->
+                        <img src="./65058.jpg" alt="ESP32 S3 Lilygo CC1101 Projesi" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600'">
+                        <div class="project-overlay-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Proje Detaylarını İncele</div>
+                    </div>
+                    <div class="project-content">
+                        <h4>ESP32-S3 Lilygo T-Display + Bruce + CC1101</h4>
+                        <p>Sub-GHz RF analiz, Bruce Firmware ve kablosuz güvenlik laboratuvar aracı. Aktif olarak geliştirilmekte ve yeni modüller eklenmektedir.</p>
+                        <div class="tags">
+                            <span class="tag">Aktif Ar-Ge</span>
+                            <span class="tag">Sub-GHz RF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>&copy; 2026 Yusuf Alper | yusufalper.com.tr - Tüm hakları saklıdır. | Executive Cybersecurity & R&D Portfolio</p>
+        </footer>
+
+    </div>
+
+    <!-- DETAY MODAL (PROJE PENCERESİ) -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            <img src="" alt="Proje Detay Görseli" class="modal-img" id="modalImg" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600'">
+            <h3 class="modal-title" id="modalTitle">Proje Başlığı</h3>
+            <p class="modal-desc" id="modalDesc">Proje açıklaması buraya gelecek.</p>
+            <div class="tags">
+                <span class="tag">ESP32-S3</span>
+                <span class="tag">Bruce Firmware</span>
+                <span class="tag">CC1101 Sub-GHz</span>
+                <span class="tag">Aktif Geliştirme</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // Müzik Çalar
+        const audio = document.getElementById('siteAudio');
+        const trigger = document.getElementById('playTrigger');
+        const symbol = document.getElementById('playSymbol');
+        const label = document.getElementById('musicLabel');
+        let isRunning = false;
+
+        function toggleMusic() {
+            if (isRunning) {
+                audio.pause();
+                symbol.classList.remove('fa-pause');
+                symbol.classList.add('fa-play');
+                label.textContent = 'Müziği Başlat';
+            } else {
+                audio.play().then(() => {
+                    symbol.classList.remove('fa-play');
+                    symbol.classList.add('fa-pause');
+                    label.textContent = 'Çalıyor...';
+                }).catch(e => {
+                    console.log("Müzik hatası:", e);
+                    alert("Tarayıcı müziği engelledi. Lütfen sayfada herhangi bir yere tıklayıp tekrar deneyin.");
+                });
+            }
+            isRunning = !isRunning;
+        }
+
+        // Modal Kontrolleri
+        const modal = document.getElementById('projectModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+
+        function openModal(title, desc, imgSrc) {
+            modalTitle.textContent = title;
+            modalDesc.textContent = desc;
+            modalImg.src = imgSrc;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
