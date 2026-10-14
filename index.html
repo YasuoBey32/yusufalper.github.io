@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yusuf Alper | Embedded Security & R&D Executive Portfolio</title>
+    <title>Yusuf Alper | Executive Security & R&D Director</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --accent-blue: #0284c7;
-            --accent-dark: #0f172a;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --shadow-elevation: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.05);
+            --bg-color: #07090e; /* Derin elit siyah */
+            --card-bg: rgba(15, 22, 36, 0.75); /* Cam efektli lüks koyu kart */
+            --gold-glow: #d4af37; /* Prestij ve para için lüks altın tonu */
+            --emerald-glow: #00ff88; /* Canlı teknoloji yeşili */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(212, 175, 55, 0.25);
+            --shadow-lux: 0 20px 50px rgba(0, 0, 0, 0.8);
         }
 
         * {
@@ -32,32 +32,36 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 255, 136, 0.05) 0%, transparent 45%);
+            background-attachment: fixed;
             min-height: 100vh;
         }
 
-        /* Müzik Widget'ı */
+        /* Lüks Müzik Widget'ı */
         .music-widget {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            padding: 10px 18px;
+            background: rgba(10, 15, 25, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--gold-glow);
+            padding: 10px 20px;
             border-radius: 50px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             z-index: 1000;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
         }
 
         .music-btn {
-            background: var(--accent-dark);
-            border: none;
-            color: #ffffff;
-            width: 36px;
-            height: 36px;
+            background: transparent;
+            border: 1px solid var(--gold-glow);
+            color: var(--gold-glow);
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -68,8 +72,9 @@
         }
 
         .music-btn:hover {
-            background: var(--accent-blue);
-            transform: scale(1.05);
+            background: var(--gold-glow);
+            color: #07090e;
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .music-info span {
@@ -79,42 +84,45 @@
         .music-title {
             font-size: 12px;
             font-weight: 600;
-            color: var(--accent-dark);
+            color: #fff;
+            letter-spacing: 0.5px;
         }
 
         .music-status {
             font-size: 10px;
-            color: var(--text-muted);
+            color: var(--gold-glow);
             font-family: 'JetBrains Mono', monospace;
         }
 
         /* Ana Konteyner */
         .container {
-            max-width: 1050px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
-        /* Hero / Profil Bölümü */
+        /* Hero / Statü ve Karizma Bölümü */
         .hero {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
             border-radius: 32px;
             padding: 60px 40px;
             text-align: center;
-            box-shadow: var(--shadow-elevation);
+            box-shadow: var(--shadow-lux);
             margin-bottom: 40px;
             position: relative;
         }
 
         .avatar-box {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 24px;
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 25px;
             border-radius: 50%;
             padding: 4px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-dark));
-            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.2);
+            background: linear-gradient(135deg, var(--gold-glow), var(--emerald-glow));
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            overflow: hidden;
         }
 
         .avatar-box img {
@@ -123,89 +131,111 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: center top;
-            background: #ffffff;
+            background: #000;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--accent-dark);
+            font-size: 3.2rem;
+            font-weight: 900;
             margin-bottom: 12px;
+            background: linear-gradient(to right, #fff, var(--gold-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
             letter-spacing: -0.5px;
         }
 
         .terminal-badge {
             display: inline-block;
-            background: #f1f5f9;
-            border: 1px solid var(--border-color);
-            color: var(--accent-blue);
-            padding: 8px 20px;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold-glow);
+            padding: 8px 22px;
             border-radius: 50px;
             font-size: 0.95rem;
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 24px;
-            font-weight: 500;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
         }
 
         .hero p {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto 30px;
             color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.85;
+            font-size: 1.08rem;
+            line-height: 1.9;
             text-align: justify;
         }
 
-        /* Sosyal Butonlar */
+        .hero p strong {
+            color: var(--gold-glow);
+            font-weight: 600;
+        }
+
+        /* Sosyal Butonlar (Altın Parıltılı) */
         .socials {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 16px;
         }
 
         .socials a {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            color: var(--accent-dark);
-            width: 46px;
-            height: 46px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+            width: 48px;
+            height: 48px;
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             transition: 0.3s;
         }
 
         .socials a:hover {
-            background: var(--accent-dark);
-            color: #ffffff;
-            border-color: var(--accent-dark);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+            background: var(--gold-glow);
+            color: #07090e;
+            border-color: var(--gold-glow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* Kartlar ve Izgara Yapısı */
+        /* Kartlar ve Ciddi Kurumsal Yapı */
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.6rem;
+            font-weight: 800;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--accent-dark);
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 12px;
+            color: #fff;
+            border-left: 4px solid var(--gold-glow);
+            padding-left: 14px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
             border-radius: 24px;
             padding: 40px;
-            box-shadow: var(--shadow-elevation);
+            box-shadow: var(--shadow-lux);
             margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-glow), transparent);
         }
 
         .grid-2 {
@@ -218,37 +248,38 @@
         @media(max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
             .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 2.4rem; }
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 700;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--accent-dark);
+            color: #fff;
         }
 
         .card h3 i {
-            color: var(--accent-blue);
+            color: var(--gold-glow);
         }
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.98rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.85;
             margin-bottom: 15px;
             text-align: justify;
         }
 
-        /* Dil Seviye Bar Sistemi */
+        /* Dil Seviye Barı (Lüks Parıltılı) */
         .lang-progress {
             margin-top: 20px;
         }
 
         .lang-bar-item {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         .lang-info {
@@ -257,22 +288,24 @@
             font-size: 0.9rem;
             margin-bottom: 6px;
             font-family: 'JetBrains Mono', monospace;
-            color: var(--accent-dark);
+            color: #fff;
             font-weight: 600;
         }
 
         .progress-track {
             width: 100%;
             height: 8px;
-            background: #f1f5f9;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 4px;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-dark));
+            background: linear-gradient(90deg, var(--emerald-glow), var(--gold-glow));
             border-radius: 4px;
+            box-shadow: 0 0 10px var(--gold-glow);
         }
 
         /* Proje Galerisi */
@@ -284,14 +317,14 @@
         }
 
         .project-item {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
+            background: rgba(10, 14, 23, 0.8);
+            border: 1px solid var(--border-glow);
             border-radius: 20px;
             overflow: hidden;
             transition: 0.3s;
             cursor: pointer;
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 340px 1fr;
         }
 
         @media(max-width: 768px) {
@@ -299,16 +332,16 @@
         }
 
         .project-item:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--gold-glow);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
         }
 
         .project-img-wrapper {
             position: relative;
             width: 100%;
-            height: 220px;
-            background: #e2e8f0;
+            height: 230px;
+            background: #000;
         }
 
         .project-img {
@@ -319,20 +352,20 @@
         }
 
         .project-item:hover .project-img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .project-overlay-hint {
             position: absolute;
             inset: 0;
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(7, 9, 14, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
+            color: var(--gold-glow);
             font-weight: 600;
-            font-size: 0.95rem;
-            gap: 8px;
+            font-size: 1rem;
+            gap: 10px;
             opacity: 0;
             transition: 0.3s;
         }
@@ -349,13 +382,14 @@
         }
 
         .project-content h4 {
-            font-size: 1.35rem;
-            color: var(--accent-dark);
+            font-size: 1.4rem;
+            color: #fff;
             margin-bottom: 10px;
+            text-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
         }
 
         .project-content p {
-            font-size: 0.96rem;
+            font-size: 0.98rem;
             color: var(--text-muted);
             margin-bottom: 15px;
             text-align: left;
@@ -366,8 +400,8 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(7, 9, 14, 0.88);
+            backdrop-filter: blur(14px);
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -375,14 +409,14 @@
         }
 
         .modal-content {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
+            background: #0f1624;
+            border: 1px solid var(--gold-glow);
             border-radius: 28px;
-            max-width: 700px;
+            max-width: 750px;
             width: 100%;
             padding: 40px;
             position: relative;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.35);
             animation: modalPop 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
@@ -397,11 +431,11 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            background: #f1f5f9;
-            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glow);
             color: var(--text-muted);
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -412,34 +446,35 @@
         }
 
         .close-modal:hover {
-            background: var(--accent-dark);
-            color: #fff;
+            background: var(--gold-glow);
+            color: #07090e;
         }
 
         .modal-img {
             width: 100%;
-            height: 280px;
+            height: 300px;
             object-fit: cover;
             border-radius: 16px;
             margin-bottom: 24px;
-            background: #e2e8f0;
+            background: #000;
         }
 
         .modal-title {
-            font-size: 1.7rem;
-            color: var(--accent-dark);
+            font-size: 1.8rem;
+            color: #fff;
             margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
 
         .modal-desc {
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.85;
+            font-size: 1.02rem;
+            line-height: 1.9;
             margin-bottom: 20px;
             text-align: justify;
         }
 
-        /* Etiketler */
+        /* Lüks Etiketler */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -448,9 +483,9 @@
         }
 
         .tag {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #16a34a;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            color: var(--gold-glow);
             padding: 6px 14px;
             border-radius: 8px;
             font-size: 0.85rem;
@@ -464,7 +499,7 @@
             padding: 40px 20px;
             color: var(--text-muted);
             font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-family: 'JetBrains Mono', monospace;
         }
     </style>
@@ -477,7 +512,7 @@
             <i class="fa-solid fa-play" id="playSymbol"></i>
         </button>
         <div class="music-info">
-            <span class="music-title">Executive Ambient</span>
+            <span class="music-title">Executive Lux Ambient</span>
             <span class="music-status" id="musicLabel">Müziği Başlat</span>
         </div>
         <audio id="siteAudio" loop>
@@ -487,91 +522,91 @@
 
     <div class="container">
         
-        <!-- HERO / KİŞİSEL PROFİL -->
+        <!-- HERO / KİŞİSEL PROFİL VE STATÜ -->
         <section class="hero">
             <div class="avatar-box">
                 <!-- 65058.jpg dosyan GitHub'da yan yana durduğu sürece tam oturur -->
                 <img src="./65058.jpg" alt="Yusuf Alper" onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400'">
             </div>
             <h1>Yusuf Alper</h1>
-            <div class="terminal-badge">> root@yusufalper:~# security_engineer & r&d_specialist</div>
+            <div class="terminal-badge">> root@yusufalper:~# executive_director & high-tier_r&d</div>
             <p>
-                Bursa doğumlu, Afyonkarahisar'da akademik kariyerini sürdüren 19 yaşında vizyoner bir Ar-Ge ve siber güvenlik geliştiricisiyim. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde (İngilizce hazırlık sınıfı) eğitim alarak küresel ticari dinamikleri, finansal sistemleri ve stratejik planlamayı derinlemesine inceliyorum. Aynı zamanda kendi laboratuvarımda gömülü sistemler, donanım modifikasyonları, Kali Linux sızma testleri ve radyo frekans (RF) analizleri üzerine ileri düzey mühendislik projeleri yürütüyorum. Klasik ezberlerin ve sıradan kalıpların ötesine geçerek teknolojinin hem yazılımsal hem de donanımsal altyapısını bizzat ellerimle inşa ediyor, her geçen gün çıtayı daha yükseğe taşıyorum.
+                Bursa doğumlu, Afyonkarahisar merkezli küresel vizyona sahip, iş dünyasının ve ileri düzey teknolojinin gerektirdiği üst düzey statüyü temsil eden bir <strong>Ar-Ge ve Siber Güvenlik Lideriyim</strong>. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde (İngilizce Hazırlık) yürüttüğüm akademik süreç; bana sadece ticaretin ve finansal pazarların matematiğini değil, aynı zamanda küresel ölçekte milyar dolarlık projeleri yönetme stratejik olgunluğunu kazandırmaktadır. Sadece kod yazan biri değil; donanım ile yazılımı, sermaye ile stratejiyi kusursuz bir sentezle harmanlayan, geleceğin teknoloji imparatorluğunu şimdiden inşa eden bir vizyonerim.
             </p>
             <div class="socials">
                 <a href="https://github.com/YasuoBey32" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                <!-- İstediğin özel Instagram bağlantısı -->
+                <!-- Instagram Bağlantısı -->
                 <a href="https://instagram.com/yyusufalp32?mdxt=cWczNWd6cHE0bm05" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             </div>
         </section>
 
-        <!-- AKADEMİK EĞİTİM & DİL GELİŞİMİ -->
+        <!-- AKADEMİK EĞİTİM & FİNANSAL VİZYON -->
         <div class="grid-2">
             <div class="card" style="margin-bottom:0;">
-                <h3><i class="fa-solid fa-graduation-cap"></i> Üniversite & Bölüm Vizyonu</h3>
+                <h3><i class="fa-solid fa-scale-balanced"></i> Finans, Ticaret & Küresel Liderlik</h3>
                 <p>
                     <strong>Afyon Kocatepe Üniversitesi - Uluslararası Ticaret ve Finansman (İngilizce Hazırlık)</strong><br>
-                    Küresel pazarların işleyişini, uluslararası finans ağlarını ve ekonomik stratejileri kavrama amacıyla akademik hayatıma devam ediyorum. Teknoloji girişimciliği ile finansal okuryazarlığı birleştirerek geleceğin küresel projelerinde kritik roller üstlenmeyi hedefliyorum.
+                    Uluslararası ticaretin kurallarını, sermaye akışlarını, küresel pazar analizlerini ve üst düzey müzakere stratejilerini akademik düzeyde öğreniyorum. Teknoloji girişimlerini finansal güçle birleştirerek, yöneticilerin ve yatırımcıların karşısına çıktığımda doğrudan güven ve saygı uyandıran bir profesyonel duruş sergiliyorum.
                 </p>
                 <div class="tags">
-                    <span class="tag">Global Ticaret</span>
-                    <span class="tag">Finansal Strateji</span>
-                    <span class="tag">Akademik Ar-Ge</span>
+                    <span class="tag">Global Finans</span>
+                    <span class="tag">Stratejik Yatırım</span>
+                    <span class="tag">Executive Vision</span>
                 </div>
             </div>
             <div class="card" style="margin-bottom:0;">
-                <h3><i class="fa-solid fa-language"></i> Dil Gelişimi & Yetkinlikler</h3>
+                <h3><i class="fa-solid fa-globe"></i> Küresel Dil & Profesyonel Akıcılık</h3>
                 <p>
-                    Uluslararası yazılım dökümanlarını, siber güvenlik protokollerini ve global finans kaynaklarını ana dil düzeyinde takip edebilmek adına hazırlık sınıfında yoğun bir dil süreci yönetiyorum. Temel seviyelerden (A1-A2) başlayarak profesyonel akıcılığa (B1 ve üzeri) geçiş adımlarımı disiplinli bir şekilde atıyorum.
+                    Dünya standartlarında iş yapabilmenin, uluslararası sözleşmeleri okumanın ve en güncel siber güvenlik açık raporlarını orijinal dillerinde takip etmenin temel şartı olan üst düzey İngilizce yetkinliğimi hazırlık sınıfında en tepeye taşıyorum. Temel aşamaları (A1-A2) geride bırakarak tamamen profesyonel akıcılığa (B1 ve üzeri) odaklanmış durumdayım.
                 </p>
                 <div class="lang-progress">
                     <div class="lang-bar-item">
-                        <div class="lang-info"><span>A1-A2 Temel Altyapı</span><span>Tamamlandı</span></div>
+                        <div class="lang-info"><span>Temel Altyapı (A1-A2)</span><span>Tamamlandı</span></div>
                         <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
                     </div>
                     <div class="lang-bar-item">
-                        <div class="lang-info" style="margin-top:10px;"><span>B1+ Profesyonel Akıcılık</span><span>Aktif Geliştiriliyor</span></div>
-                        <div class="progress-track"><div class="progress-fill" style="width: 75%;"></div></div>
+                        <div class="lang-info" style="margin-top:10px;"><span>Global Executive Akıcılık (B1+)</span><span>Aktif Geliştiriliyor</span></div>
+                        <div class="progress-track"><div class="progress-fill" style="width: 78%;"></div></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SİBER GÜVENLİK VE GÖMÜLÜ SİSTEMLER -->
+        <!-- SİBER GÜVENLİK VE ÜST DÜZEY MÜHENDİSLİK -->
         <div class="grid-2" style="margin-top: 40px;">
             <div class="card" style="margin-bottom:0;">
-                <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik & Kali Linux</h3>
+                <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik & Kali Linux Direktörlüğü</h3>
                 <p>
-                    Kali Linux ekosistemini aktif olarak kullanarak sızma testleri (penetration testing), zafiyet analizi ve ağ dinleme senaryoları üzerinde çalışıyorum. Sistemlerin açıklarını erkenden tespit edip kapatma mekanizmaları geliştirerek siber güvenlik alanında üst düzey refleksler kazanıyorum.
+                    Kali Linux tabanlı profesyonel sızma testleri (penetration testing), kurumsal zafiyet denetimleri ve gelişmiş ağ trafiği izleme operasyonlarını bizzat yönetiyorum. Şirketlerin dijital varlıklarını korumak, kritik açıklarını henüz sömürülmeden kapatmak ve üst düzey güvenlik mimarileri kurmak üzerine uzmanlaşıyorum.
                 </p>
                 <div class="tags">
                     <span class="tag">Kali Linux</span>
-                    <span class="tag">Penetration Testing</span>
-                    <span class="tag">Network Security</span>
+                    <span class="tag">Executive Pentest</span>
+                    <span class="tag">Asset Protection</span>
                 </div>
             </div>
             <div class="card" style="margin-bottom:0;">
-                <h3><i class="fa-solid fa-microchip"></i> Donanım & Gömülü Sistemler</h3>
+                <h3><i class="fa-solid fa-microchip"></i> Donanım R&D & Gömülü Sistemler</h3>
                 <p>
-                    Mikrodenetleyiciler, RF alıcı-verici modüller ve elektronik devre elemanlarıyla fiziksel Ar-Ge projeleri tasarlıyorum. Yazılımı donanımla buluşturarak gerçek dünya problemlerine akıllı donanımsal çözümler üretiyor ve laboratuvarımda sürekli testler gerçekleştiriyorum.
+                    Mikrodenetleyiciler, radyo frekans (RF) alıcı-vericiler ve özel devre prototipleri üzerinde gerçekleştirilen donanım Ar-Ge çalışmalarını yönetiyorum. Yazılım ile donanımı entegre ederek piyasada eşi benzeri olmayan akıllı güvenlik araçları ve özel frekans analiz cihazları geliştiriyorum.
                 </p>
                 <div class="tags">
-                    <span class="tag">ESP32-S3</span>
-                    <span class="tag">Hardware R&D</span>
-                    <span class="tag">Firmware Flashing</span>
+                    <span class="tag">ESP32-S3 R&D</span>
+                    <span class="tag">RF Engineering</span>
+                    <span class="tag">Firmware Architecture</span>
                 </div>
             </div>
         </div>
 
         <!-- AKTİF GELİŞTİRDİĞİM PROJELER (ESP32 S3 + BRUCE + CC1101) -->
         <div class="card" style="margin-top: 40px;">
-            <div class="section-title"><i class="fa-solid fa-code-branch"></i> Aktif Geliştirdiğim Projeler & Donanım Ar-Ge</div>
-            <p style="margin-bottom: 25px;">Kendi laboratuvarımda sıfırdan lehimleyerek, pin bağlantılarını kurarak ve yazılımını yükleyerek bizzat hayata geçirdiğim ana projem. <strong>Detaylı teknik incelemeyi görmek için kartın üzerine tıklayabilirsin:</strong></p>
+            <div class="section-title"><i class="fa-solid fa-gem"></i> Amiral Gemisi Proje & Donanım Ar-Ge</div>
+            <p style="margin-bottom: 25px;">Kendi laboratuvarımda tamamen kendi öz sermayem, emeğim ve mühendislik vizyonumla sıfırdan kurduğum, aktif olarak geliştirdiğim ana projem. <strong>Detaylı teknik incelemeyi ve kurumsal mimariyi görmek için kartın üzerine tıklayabilirsin:</strong></p>
             
             <div class="project-gallery">
                 <!-- Proje Kartı -->
-                <div class="project-item" onclick="openModal('ESP32-S3 Lilygo T-Display + Bruce Firmware + CC1101', 'Bu proje; ESP32-S3 mimarisine sahip Lilygo T-Display renkli OLED geliştirme kartı ile CC1101 Sub-GHz radyo frekans alıcı-verici modülünün kablo/pin entegrasyonu ile sıfırdan inşa edilmiştir. Cihaza özel olarak derlenen Bruce Firmware yazılımı flaşlanarak; Sub-GHz RF sinyal yakalama ve kopyalama (Scan/Copy), radyo frekans spektrum analizi, Wi-Fi test senaryoları ve interaktif OLED menü yönetimi aktif hale getirilmiştir. Tamamen kendi ellerimle kurduğum bu sistem, kablosuz ağlar ve RF frekansları üzerine geliştirdiğim en üst düzey laboratuvar aracıdır.', './65058.jpg')">
+                <div class="project-item" onclick="openModal('ESP32-S3 Lilygo T-Display + Bruce Firmware + CC1101', 'Bu amiral gemisi proje; ESP32-S3 tabanlı Lilygo T-Display OLED geliştirme kartı ile CC1101 Sub-GHz radyo frekans modülünün özel pin haritalaması ve devre mimarisiyle sıfırdan inşa edilmiştir. Cihaza özel olarak derlenen Bruce Firmware yazılımı entegre edilerek; Sub-GHz RF sinyal yakalama/kopyalama (Scan/Copy), spektrum analizi, kablosuz ağ test senaryoları ve interaktif OLED arayüz yönetimi en üst performans düzeyinde aktif hale getirilmiştir. Tamamen profesyonel bir Ar-Ge ürünü statüsündedir ve yeni modüllerle sürekli geliştirilmektedir.', './65058.jpg')">
                     <div class="project-img-wrapper">
                         <!-- Görsel -->
                         <img src="./65058.jpg" alt="ESP32 S3 Lilygo CC1101 Projesi" class="project-img" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=600'">
@@ -579,10 +614,11 @@
                     </div>
                     <div class="project-content">
                         <h4>ESP32-S3 Lilygo T-Display + Bruce + CC1101</h4>
-                        <p>Sub-GHz RF analiz, Bruce Firmware ve kablosuz güvenlik laboratuvar aracı. Aktif olarak geliştirilmekte ve yeni modüller eklenmektedir.</p>
+                        <p>Sub-GHz RF analiz, Bruce Firmware entegrasyonu ve kurumsal kablosuz güvenlik laboratuvar aracı. Aktif Ar-Ge aşamasında üstün performans sunmaktadır.</p>
                         <div class="tags">
-                            <span class="tag">Aktif Ar-Ge</span>
+                            <span class="tag">Flagship Product</span>
                             <span class="tag">Sub-GHz RF</span>
+                            <span class="tag">Active Development</span>
                         </div>
                     </div>
                 </div>
@@ -591,7 +627,7 @@
 
         <!-- FOOTER -->
         <footer>
-            <p>&copy; 2026 Yusuf Alper | yusufalper.com.tr - Tüm hakları saklıdır. | Executive Cybersecurity & R&D Portfolio</p>
+            <p>&copy; 2026 Yusuf Alper | yusufalper.com.tr - Tüm hakları saklıdır. | Executive Security & R&D Directorate</p>
         </footer>
 
     </div>
@@ -604,10 +640,9 @@
             <h3 class="modal-title" id="modalTitle">Proje Başlığı</h3>
             <p class="modal-desc" id="modalDesc">Proje açıklaması buraya gelecek.</p>
             <div class="tags">
-                <span class="tag">ESP32-S3</span>
-                <span class="tag">Bruce Firmware</span>
-                <span class="tag">CC1101 Sub-GHz</span>
-                <span class="tag">Aktif Geliştirme</span>
+                <span class="tag">High-End Security</span>
+                <span class="tag">Hardware R&D</span>
+                <span class="tag">Executive Grade</span>
             </div>
         </div>
     </div>
