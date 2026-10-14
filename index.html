@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yusuf Alper | Executive Security & R&D Director</title>
+    <title>Yusuf Alper | Executive Underworld & R&D Director</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #12090d;
-            --gold-glow: #f59e0b;
-            --gold-light: #fde68a;
-            --emerald-glow: #10b981;
-            --text-main: #f8fafc;
-            --text-muted: #cbd5e1;
+            --bg-color: #020408;
+            --gold-glow: #d97706;
+            --gold-light: #fbbf24;
+            --hacker-green: #00ff66;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-mafia: rgba(217, 119, 6, 0.4);
         }
 
         * {
@@ -31,9 +32,9 @@
             color: var(--text-main);
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
-                linear-gradient(180deg, #180c12 0%, #0d0609 100%);
+                radial-gradient(circle at 50% 10%, rgba(217, 119, 6, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 10% 90%, rgba(0, 255, 102, 0.05) 0%, transparent 40%),
+                linear-gradient(180deg, #050811 0%, #020408 100%);
             background-attachment: fixed;
             min-height: 100vh;
         }
@@ -49,58 +50,60 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 8px 20px;
             z-index: 1500;
-            background: rgba(18, 9, 13, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(245, 158, 11, 0.25);
+            background: rgba(5, 8, 17, 0.9);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border-mafia);
             border-radius: 50px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(217, 119, 6, 0.2);
         }
 
         .header-logo {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gold-light);
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .menu-toggle {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: rgba(217, 119, 6, 0.15);
+            border: 1px solid var(--border-mafia);
             color: var(--gold-light);
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: 0.3s;
         }
 
         .menu-toggle:hover {
             background: var(--gold-glow);
-            color: #12090d;
+            color: #020408;
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
-        /* Sağdan Açılan Dosya Menüsü */
+        /* Sağdan Açılan Mafya / Dosya Menüsü */
         .drawer-menu {
             position: fixed;
             top: 0;
             right: -350px;
-            width: 330px;
+            width: 320px;
             height: 100vh;
-            background: rgba(15, 8, 12, 0.98);
+            background: rgba(3, 5, 10, 0.98);
             backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(245, 158, 11, 0.3);
+            border-left: 1px solid var(--border-mafia);
             z-index: 2500;
             transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            padding: 40px 30px;
+            padding: 35px 25px;
             display: flex;
             flex-direction: column;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.9);
         }
 
         .drawer-menu.active {
@@ -111,45 +114,51 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 35px;
+            border-bottom: 1px solid rgba(217, 119, 6, 0.2);
             padding-bottom: 15px;
         }
 
         .drawer-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--gold-light);
             font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1px;
         }
 
         .drawer-close {
             background: transparent;
             border: none;
             color: var(--text-muted);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .drawer-close:hover {
+            color: var(--gold-glow);
         }
 
         .drawer-links {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .drawer-links a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 16px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
         }
 
@@ -158,15 +167,16 @@
         }
 
         .drawer-links a:hover {
-            background: rgba(245, 158, 11, 0.15);
-            border-color: var(--gold-glow);
+            background: rgba(217, 119, 6, 0.15);
+            border-color: var(--border-mafia);
             color: var(--gold-light);
+            transform: translateX(-3px);
         }
 
         .overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             backdrop-filter: blur(5px);
             z-index: 2000;
             display: none;
@@ -176,42 +186,48 @@
             display: block;
         }
 
-        /* Müzik Widget'ı */
+        /* Küçültülmüş Kompakt Müzik Widget'ı */
         .music-widget {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: rgba(18, 9, 13, 0.9);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--gold-glow);
-            padding: 12px 22px;
-            border-radius: 50px;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(5, 8, 17, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-mafia);
+            padding: 8px 14px;
+            border-radius: 40px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
             z-index: 1000;
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.25);
             cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .music-widget:hover {
+            border-color: var(--gold-light);
+            box-shadow: 0 0 25px rgba(217, 119, 6, 0.4);
         }
 
         .music-btn {
             background: transparent;
-            border: 1px solid var(--gold-glow);
+            border: 1px solid var(--border-mafia);
             color: var(--gold-glow);
-            width: 38px;
-            height: 38px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 11px;
             transition: 0.3s;
         }
 
         .music-btn:hover {
             background: var(--gold-glow);
-            color: #12090d;
+            color: #020408;
         }
 
         .music-info span {
@@ -219,14 +235,15 @@
         }
 
         .music-title {
-            font-size: 12px;
+            font-size: 10px;
             font-weight: 700;
             color: #fff;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .music-status {
-            font-size: 10px;
-            color: var(--gold-light);
+            font-size: 8px;
+            color: var(--hacker-green);
             font-family: 'JetBrains Mono', monospace;
         }
 
@@ -234,27 +251,27 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 130px 24px 80px;
+            padding: 120px 24px 80px;
         }
 
         .hero {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 60px;
         }
 
         .avatar-box {
-            width: 170px;
-            height: 170px;
-            margin: 0 auto 25px;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--gold-glow), var(--emerald-glow));
-            box-shadow: 0 0 35px rgba(245, 158, 11, 0.3);
+            padding: 3px;
+            background: linear-gradient(135deg, var(--gold-glow), var(--hacker-green));
+            box-shadow: 0 0 30px rgba(217, 119, 6, 0.35);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #1a1017;
+            background-color: #080c14;
         }
 
         .avatar-box img {
@@ -266,9 +283,9 @@
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3rem;
             font-weight: 900;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             background: linear-gradient(to right, #fff, var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -277,22 +294,23 @@
 
         .terminal-badge {
             display: inline-block;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: var(--gold-light);
-            padding: 8px 22px;
+            background: rgba(0, 255, 102, 0.08);
+            border: 1px solid rgba(0, 255, 102, 0.3);
+            color: var(--hacker-green);
+            padding: 6px 18px;
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.1);
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.15rem;
-            line-height: 2;
+            font-size: 1.1rem;
+            line-height: 1.9;
             text-align: justify;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .hero p strong {
@@ -300,34 +318,34 @@
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
             background: linear-gradient(to right, #fff, var(--gold-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding-top: 20px;
+            padding-top: 15px;
         }
 
         .section-subtitle {
             text-align: center;
             color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 45px;
-            line-height: 1.7;
+            font-size: 1rem;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
 
         .content-block {
-            margin-bottom: 60px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 50px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid rgba(217, 119, 6, 0.15);
         }
 
         .content-block h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -339,141 +357,143 @@
 
         .content-block p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.95;
+            font-size: 1.02rem;
+            line-height: 1.9;
             text-align: justify;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .blog-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 25px;
+            margin-top: 25px;
         }
 
         .blog-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-radius: 20px;
-            padding: 35px;
+            background: rgba(5, 8, 17, 0.6);
+            border: 1px solid var(--border-mafia);
+            border-radius: 16px;
+            padding: 30px;
             transition: 0.3s;
             cursor: pointer;
         }
 
         .blog-card:hover {
-            border-color: var(--gold-glow);
-            background: rgba(245, 158, 11, 0.04);
-            transform: translateY(-4px);
+            border-color: var(--gold-light);
+            background: rgba(217, 119, 6, 0.05);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .blog-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
-            color: var(--gold-light);
-            background: rgba(245, 158, 11, 0.1);
-            padding: 5px 12px;
+            font-size: 0.78rem;
+            color: var(--hacker-green);
+            background: rgba(0, 255, 102, 0.1);
+            padding: 4px 10px;
             border-radius: 6px;
             display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .blog-card h4 {
-            font-size: 1.4rem;
-            color: #fff;
             margin-bottom: 12px;
         }
 
+        .blog-card h4 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
         .blog-card p {
-            font-size: 1rem;
+            font-size: 0.98rem;
             color: var(--text-muted);
-            line-height: 1.85;
-            margin-bottom: 15px;
+            line-height: 1.8;
+            margin-bottom: 12px;
             text-align: justify;
         }
 
         .socials {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-top: 30px;
+            gap: 15px;
+            margin-top: 25px;
         }
 
         .socials a {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-mafia);
             color: var(--text-main);
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             transition: 0.3s;
         }
 
         .socials a:hover {
             background: var(--gold-glow);
-            color: #12090d;
-            border-color: var(--gold-glow);
+            color: #020408;
+            border-color: var(--gold-light);
+            box-shadow: 0 0 15px var(--gold-glow);
         }
 
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
+            margin-top: 12px;
         }
 
         .tag {
-            background: rgba(245, 158, 11, 0.08);
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: rgba(217, 119, 6, 0.1);
+            border: 1px solid rgba(217, 119, 6, 0.3);
             color: var(--gold-light);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.88rem;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
         }
 
         .project-card-fluid {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(245, 158, 11, 0.25);
-            border-radius: 24px;
+            background: rgba(5, 8, 17, 0.7);
+            border: 1px solid var(--border-mafia);
+            border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 30px;
+            margin-top: 25px;
         }
 
         .project-card-fluid:hover {
-            border-color: var(--gold-glow);
-            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15);
+            border-color: var(--gold-light);
+            box-shadow: 0 15px 35px rgba(217, 119, 6, 0.2);
         }
 
         .project-img-fluid {
             width: 100%;
-            height: 280px;
+            height: 260px;
             object-fit: cover;
         }
 
         .project-info-fluid {
-            padding: 35px;
+            padding: 30px;
         }
 
         .project-info-fluid h4 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .project-info-fluid p {
             color: var(--text-muted);
-            font-size: 1.02rem;
-            line-height: 1.85;
-            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
         }
 
         /* Detay Modal */
@@ -481,7 +501,7 @@
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(12, 5, 8, 0.92);
+            background: rgba(2, 4, 8, 0.94);
             backdrop-filter: blur(16px);
             z-index: 3000;
             align-items: center;
@@ -490,78 +510,78 @@
         }
 
         .modal-content {
-            background: #180c12;
-            border: 1px solid var(--gold-glow);
-            border-radius: 28px;
-            max-width: 800px;
+            background: #080c14;
+            border: 1px solid var(--border-mafia);
+            border-radius: 24px;
+            max-width: 750px;
             width: 100%;
-            padding: 40px;
+            padding: 35px;
             position: relative;
-            box-shadow: 0 0 70px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 0 50px rgba(217, 119, 6, 0.3);
             max-height: 90vh;
             overflow-y: auto;
         }
 
         .close-modal {
             position: absolute;
-            top: 25px;
-            right: 25px;
+            top: 20px;
+            right: 20px;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            border: 1px solid var(--border-mafia);
             color: var(--text-muted);
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             transition: 0.3s;
         }
 
         .close-modal:hover {
             background: var(--gold-glow);
-            color: #12090d;
+            color: #020408;
         }
 
         .modal-img {
             width: 100%;
-            height: 300px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 24px;
+            border-radius: 12px;
+            margin-bottom: 20px;
         }
 
         .modal-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             color: #fff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .modal-desc {
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.85;
-            margin-bottom: 20px;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
             text-align: justify;
         }
 
         .modal-desc h4 {
             color: var(--gold-light);
-            margin-top: 15px;
+            margin-top: 12px;
             margin-bottom: 5px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         footer {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             color: var(--text-muted);
-            font-size: 0.88rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(217, 119, 6, 0.15);
             font-family: 'JetBrains Mono', monospace;
-            margin-top: 60px;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -579,26 +599,26 @@
     <div class="overlay" id="menuOverlay" onclick="toggleDrawer()"></div>
     <div class="drawer-menu" id="menuDrawer">
         <div class="drawer-header">
-            <span class="drawer-title">EXECUTIVE FILE</span>
+            <span class="drawer-title">UNDERWORLD FILE</span>
             <button class="drawer-close" onclick="toggleDrawer()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <ul class="drawer-links">
-            <li><a href="#profile"><i class="fa-solid fa-user-tie"></i> Yönetici Profili</a></li>
-            <li><a href="#academic"><i class="fa-solid fa-graduation-cap"></i> Akademik & Bölüm</a></li>
-            <li><a href="#blog"><i class="fa-solid fa-newspaper"></i> Vizyon & Bölüm Blogu</a></li>
-            <li><a href="#projects"><i class="fa-solid fa-microchip"></i> Amiral Gemisi Ar-Ge</a></li>
-            <li><a href="https://github.com/YasuoBey32" target="_blank"><i class="fa-brands fa-github"></i> GitHub Reposu</a></li>
+            <li><a href="#profile"><i class="fa-solid fa-user-secret"></i> Operasyonel Profil</a></li>
+            <li><a href="#academic"><i class="fa-solid fa-scale-balanced"></i> Finans & Ticaret</a></li>
+            <li><a href="#blog"><i class="fa-solid fa-terminal"></i> Hacker & Vizyon Logları</a></li>
+            <li><a href="#projects"><i class="fa-solid fa-microchip"></i> Amiral Gemisi Donanım</a></li>
+            <li><a href="https://github.com/YasuoBey32" target="_blank"><i class="fa-brands fa-github"></i> Secure GitHub</a></li>
         </ul>
     </div>
 
-    <!-- MÜZİK WIDGET'I (Eray.mp3 Bağlandı) -->
+    <!-- KÜÇÜLTÜLMÜŞ KOMPAKT MÜZİK WIDGET'I (Eray.mp3 Aktif) -->
     <div class="music-widget" onclick="toggleMusic()">
         <button class="music-btn" id="playTrigger">
             <i class="fa-solid fa-play" id="playSymbol"></i>
         </button>
         <div class="music-info">
-            <span class="music-title">Era7Capone - OLABİLİR</span>
-            <span class="music-status" id="musicLabel">Müziği Başlat</span>
+            <span class="music-title">Eray.mp3</span>
+            <span class="music-status" id="musicLabel">Oynat</span>
         </div>
         <audio id="siteAudio" loop>
             <source src="Eray.mp3" type="audio/mpeg">
@@ -613,9 +633,9 @@
                 <img src="65058.jpg" alt="Yusuf Alper" onerror="this.style.display='none'">
             </div>
             <h1>Yusuf Alper</h1>
-            <div class="terminal-badge">> root@yusufalper:~# executive_director & high-tier_r&d</div>
+            <div class="terminal-badge">> root@underworld:~# executive_director & r&d_mafia</div>
             <p>
-                Bursa doğumlu, Afyonkarahisar merkezli küresel vizyona sahip, iş dünyasının ve ileri düzey teknolojinin gerektirdiği üst düzey statüyü temsil eden bir <strong>Ar-Ge ve Siber Güvenlik Lideriyim</strong>. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde (İngilizce Hazırlık) yürüttüğüm akademik süreç; bana sadece ticaretin ve finansal pazarların matematiğini değil, aynı zamanda küresel ölçekte milyar dolarlık projeleri yönetme stratejik olgunluğunu kazandırmaktadır.
+                Bursa doğumlu, Afyonkarahisar merkezli küresel vizyona sahip; yer altı dünyasının stratejik disiplini ile siber güvenlik teknolojilerini aynı masada buluşturan bir <strong>Ar-Ge ve Siber Güvenlik Lideriyim</strong>. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde (İngilizce Hazırlık) yürüttüğüm operasyonel süreç; bana sadece sermaye akışlarının matematiğini değil, aynı zamanda küresel ağları yönetme iradesini kazandırmaktadır.
             </p>
 
             <div class="socials">
@@ -627,103 +647,100 @@
 
         <!-- AKADEMİK EĞİTİM & FİNANSAL VİZYON -->
         <div class="content-block" id="academic">
-            <h2 class="section-title">Akademik Vizyon & Stratejik Altyapı</h2>
-            <p class="section-subtitle">Küresel ticaretin dinamiklerini ve ekonomik entegrasyonu en üst düzeyde kavrama yolculuğum.</p>
+            <h2 class="section-title">Finansal Ağlar & Stratejik Altyapı</h2>
+            <p class="section-subtitle">Küresel ticaretin kurallarını yazmak ve ekonomik manipülasyonları öngörmek.</p>
             
-            <h3><i class="fa-solid fa-scale-balanced"></i> Finans, Ticaret & Küresel Liderlik</h3>
+            <h3><i class="fa-solid fa-vault"></i> Sermaye Yönetimi & Küresel Ticaret</h3>
             <p>
                 <strong>Afyon Kocatepe Üniversitesi - Uluslararası Ticaret ve Finansman (İngilizce Hazırlık)</strong><br>
-                Uluslararası ticaretin kurallarını, sermaye akışlarını, küresel pazar analizlerini ve üst düzey müzakere stratejilerini akademik düzeyde öğreniyorum. Teknoloji girişimlerini finansal güçle birleştirerek, yöneticilerin ve yatırımcıların karşısına çıktığımda doğrudan güven ve saygı uyandıran bir profesyonel duruş sergiliyorum.
+                Uluslararası ticaretin kuralsız gibi görünen yapısındaki tüm matematiksel dengeleri çözümlüyorum. Kaynakların nasıl dağıtıldığını, küresel pazar akışlarını ve stratejik hamlelerin finansal karşılığını en ince detayına kadar analiz ederek masada her zaman kazanan taraf oluyorum.
             </p>
             <div class="tags">
-                <span class="tag">Global Finans</span>
-                <span class="tag">Stratejik Yatırım</span>
-                <span class="tag">Executive Vision</span>
+                <span class="tag">Global Capital</span>
+                <span class="tag">Strategic Dominance</span>
+                <span class="tag">Underworld Finance</span>
             </div>
         </div>
 
-        <!-- VİZYON & BÖLÜM BLOG SİSTEMİ -->
+        <!-- VİZYON & HACKER BLOG SİSTEMİ -->
         <div class="content-block" id="blog">
-            <h2 class="section-title">Executive Blog & Bölüm Analizleri</h2>
-            <p class="section-subtitle">Uluslararası ticaret, finansal stratejiler ve siber güvenlik entegrasyonu üzerine kaleme aldığım vizyoner makaleler:</p>
+            <h2 class="section-title">Underworld Logları & Analizler</h2>
+            <p class="section-subtitle">Siber istihbarat, donanım manipülasyonu ve yeraltı teknolojileri üzerine notlar:</p>
             
             <div class="blog-grid">
-                <div class="blog-card" onclick="openBlogModal('Küresel Ticaretin Dijital Güvenlikle Sentezi', 'Uluslararası pazarlarda faaliyet gösteren şirketlerin en büyük varlığı artık sadece sermayeleri değil, dijital altyapılarının güvenliğidir. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde edindiğim ekonomik vizyonu, siber güvenlik protokolleriyle birleştirerek geleceğin risk yönetim modellerini tasarlıyorum. Küresel tedarik zincirleri ve finansal ağlar, sızma testleri ve donanımsal güvenlik önlemleriyle korunduğunda gerçek anlamda sürdürülebilir bir büyüme yakalayabilir.')">
-                    <span class="blog-tag">GLOBAL STRATEJİ</span>
-                    <h4>Küresel Ticaretin Dijital Güvenlikle Sentezi</h4>
-                    <p>Uluslararası pazarlarda sermaye güvenliği ve siber tehdit yönetiminin ekonomik boyutları üzerine derinlemesine bir analiz...</p>
-                    <div class="tags"><span class="tag">Makaleyi Oku</span></div>
+                <div class="blog-card" onclick="openBlogModal('Dijital Ağlarda Görünmezlik ve Sızma Sanatı', 'Siber dünyada iz bırakmamak bir tercih değil, hayatta kalma kuralıdır. Kali Linux terminalinde atılan her komut, doğru ağ analiziyle birleştirildiğinde dijital kalelerin kapılarını sessizce aralar. Gerçek bir operasyon lideri, sistemin açıklarını kapatmadan önce onları avlamayı bilmelidir.')">
+                    <span class="blog-tag">CYBER INTELLIGENCE</span>
+                    <h4>Dijital Ağlarda Görünmezlik ve Sızma Sanatı</h4>
+                    <p>Ağ trafiğini manipüle etme, sızma testleri ve dijital varlıkları korumanın karanlık yüzü üzerine...</p>
+                    <div class="tags"><span class="tag">Logu Oku</span></div>
                 </div>
 
-                <div class="blog-card" onclick="openBlogModal('Gömülü Sistemler ve Donanım Ar-Ge Vizyonu', 'Yazılım dünyası soyut bir dünyadır; ancak donanım ile birleştiğinde gerçek dünyayı şekillendiren bir silaha dönüşür. Laboratuvarımda geliştirdiğim ESP32 ve Sub-GHz RF projeleri, teorik mühendislik bilgisinin pratiğe dökülmüş somut halleridir. Bir teknoloji liderinin sadece yazılım dilini bilmesi yetmez; silikonun, frekansın ve akımın dilini de bizzat konuşabilmesi gerekir.')">
-                    <span class="blog-tag">HARDWARE R&D</span>
-                    <h4>Gömülü Sistemler ve Donanım Ar-Ge Vizyonu</h4>
-                    <p>Silikon mimarisi, radyo frekans bantları ve donanımsal Ar-Ge çalışmalarının bir mühendis için taşıdığı hayati önem...</p>
-                    <div class="tags"><span class="tag">Makaleyi Oku</span></div>
+                <div class="blog-card" onclick="openBlogModal('Silikon ve Frekans: Donanımın Dilini Çözmek', 'Yazılım sadece bir beyindir; ancak donanım ona fiziksel güç verir. Laboratuvarımda geliştirdiğim Sub-GHz RF cihazları ve ESP32 modülleri, havadaki görünmez dalgaları kontrol etmemizi sağlar. Frekansı elinde tutan, sahanın hakimidir.')">
+                    <span class="blog-tag">HARDWARE DOMINANCE</span>
+                    <h4>Silikon ve Frekans: Donanımın Dilini Çözmek</h4>
+                    <p>Sub-GHz radyo frekansları, özel prototipler ve donanımsal Ar-Ge operasyonlarının gücü...</p>
+                    <div class="tags"><span class="tag">Logu Oku</span></div>
                 </div>
             </div>
         </div>
 
         <!-- SİBER GÜVENLİK VE MÜHENDİSLİK -->
         <div class="content-block">
-            <h2 class="section-title">Mühendislik & Operasyonel Yetkinlikler</h2>
-            <p class="section-subtitle">Donanım ve siber güvenlik alanında icra ettiğim ileri düzey teknik çalışmalar.</p>
+            <h2 class="section-title">Operasyonel Yetkinlikler</h2>
+            <p class="section-subtitle">Siber güvenlik ve donanım mühendisliğinde icra edilen kritik kabiliyetler.</p>
 
-            <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik & Kali Linux Direktörlüğü</h3>
+            <h3><i class="fa-solid fa-terminal"></i> Kali Linux & Siber İstihbarat</h3>
             <p>
-                Kali Linux tabanlı profesyonel sızma testleri (penetration testing), kurumsal zafiyet denetimleri ve gelişmiş ağ trafiği izleme operasyonlarını bizzat yönetiyorum. Şirketlerin dijital varlıklarını korumak, kritik açıklarını henüz sömürülmeden kapatmak ve üst düzey güvenlik mimarileri kurmak üzerine uzmanlaşıyorum.
+                Kali Linux tabanlı gelişmiş sızma testleri, ağ zafiyet analizleri ve güvenlik duvarı ihlal simülasyonlarını yönetiyorum. Kurumsal sistemlerin zayıf noktalarını tespit ederek onları dış tehditlere karşı demirden bir kaleye dönüştürüyorum.
             </p>
-            <div class="tags" style="margin-bottom: 30px;">
+            <div class="tags" style="margin-bottom: 25px;">
                 <span class="tag">Kali Linux</span>
-                <span class="tag">Executive Pentest</span>
-                <span class="tag">Asset Protection</span>
+                <span class="tag">Advanced Pentest</span>
+                <span class="tag">Network Shield</span>
             </div>
 
-            <h3><i class="fa-solid fa-microchip"></i> Donanım R&D & Gömülü Sistemler</h3>
+            <h3><i class="fa-solid fa-microchip"></i> Donanım R&D & RF Mühendisliği</h3>
             <p>
-                Mikrodenetleyiciler, radyo frekans (RF) alıcı-vericiler ve özel devre prototipleri üzerinde gerçekleştirilen donanım Ar-Ge çalışmalarını yönetiyorum. Yazılım ile donanımı entegre ederek piyasada eşi benzeri olmayan akıllı güvenlik araçları ve özel frekans analiz cihazları geliştiriyorum.
+                Mikrodenetleyiciler ve özel radyo frekans modülleri üzerinde gerçekleştirilen donanım projeleriyle sahadaki tüm kablosuz iletişimi avucumun içine alıyorum. Yazılım ile donanımın kusursuz sentezini bizzat inşa ediyorum.
             </p>
             <div class="tags">
-                <span class="tag">ESP32-S3 R&D</span>
-                <span class="tag">RF Engineering</span>
-                <span class="tag">Firmware Architecture</span>
+                <span class="tag">ESP32-S3</span>
+                <span class="tag">RF Analysis</span>
+                <span class="tag">Custom Firmware</span>
             </div>
         </div>
 
         <!-- AMİRAL GEMİSİ PROJE -->
         <div class="content-block" id="projects">
-            <h2 class="section-title">Amiral Gemisi Proje & Donanım Ar-Ge</h2>
-            <p class="section-subtitle">Kendi laboratuvarımda tamamen kendi emeğimle inşa ettiğim üst düzey Ar-Ge ürünü.</p>
+            <h2 class="section-title">Amiral Gemisi Donanım Ar-Ge</h2>
+            <p class="section-subtitle">Laboratuvarımda sıfırdan kurduğum, yeraltı frekans operasyon aracı.</p>
             
             <div class="project-card-fluid" onclick="openModal('ESP32-S3 Lilygo T-Display + Bruce Firmware + CC1101', 
                 '<h4>1. Temel Donanım Bileşenleri</h4>' +
-                '<p>• <strong>ESP32-S3 Çipi (LILYGO T-Display S3):</strong> Cihazın merkezinde yer alan bu mikrodenetleyici; çift çekirdekli işlemcisi, yüksek işlem gücü ve dahili Wi-Fi/Bluetooth özellikleriyle tüm yazılımı çalıştıran beyin görevini üstlenir.<br>' +
-                '• <strong>1.9 inç Renkli IPS Ekran:</strong> ST7789 sürücülü ekran, anlık menü takibini, spektrum grafiklerini ve frekans verilerini net bir şekilde görmeni sağlar.<br>' +
-                '• <strong>CC1101 RF Modülü:</strong> Sub-GHz (1 GHz altı) frekans bandında sinyal alıp göndermeye yarayan özel bir radyo çipidir.<br>' +
-                '• <strong>Anten Yapısı:</strong> Harici yay anten (helix antenna) aracılığıyla radyo dalgalarını havadan alır ve dışarıya yayar.</p>' +
+                '<p>• <strong>ESP32-S3 Çipi (LILYGO T-Display S3):</strong> Çift çekirdekli gücüyle sistemin ana sinir sistemini oluşturur.<br>' +
+                '• <strong>1.9 inç Renkli IPS Ekran:</strong> Anlık spektrum verilerini ve frekans akışını net şekilde takip etmeyi sağlar.<br>' +
+                '• <strong>CC1101 RF Modülü:</strong> Sub-GHz bandında sinyal alıp göndermeye yarayan özel radyo çipidir.<br>' +
+                '• <strong>Anten Yapısı:</strong> Harici yay anten ile radyo dalgalarını havadan hassasiyetle toplar.</p>' +
                 
-                '<h4>2. Teknik Özellikler ve Çalışma Frekansları</h4>' +
-                '<p>• <strong>Frekans Bandı:</strong> 300 MHz - 928 MHz aralığında faaliyet gösterir. Garaj kapıları, bariyerler ve kepenklerin kullandığı 433.92 MHz, 315 MHz ve 868 MHz bantlarında etkilidir.<br>' +
-                '• <strong>Modülasyon Desteği:</strong> 2-FSK, GFSK, MSK, OOK protokollerini destekler; pek çok farklı kumanda sinyalini çözebilir veya taklit edebilir.<br>' +
-                '• <strong>Güç Gereksinimi:</strong> Kritik 3.3V hattından beslenir; yanlışlıkla 5V verilmesi durumunda donanım kalıcı olarak zarar görür.</p>' +
+                '<h4>2. Teknik Parametreler & Frekanslar</h4>' +
+                '<p>• <strong>Frekans Bandı:</strong> 300 MHz - 928 MHz aralığı (433.92 MHz, 315 MHz, 868 MHz bantlarında mutlak hakimiyet).<br>' +
+                '• <strong>Modülasyon Desteği:</strong> 2-FSK, GFSK, MSK, OOK protokollerini çözme ve emüle etme yeteneği.<br>' +
+                '• <strong>Güç Güvenliği:</strong> Hassas 3.3V mimarisiyle kararlı çalışma prensibi.</p>' +
                 
                 '<h4>3. Yazılımsal Kabiliyetler (Bruce Firmware)</h4>' +
-                '<p>• <strong>Sinyal Dinleme ve Analiz (Sniffing/Capture):</strong> Sub-GHz sinyallerini protokol bazında (Nice 12bit, Came 12bit) kaydetmeye yarar.<br>' +
-                '• <strong>Sinyal Yayma (Emulation/Transmit):</strong> Kaydedilmiş sinyali tekrar havaya yayarak test etme imkanı sunar.<br>' +
-                '• <strong>Spektrum Analizi (RSSI Spectrum):</strong> Sinyal yoğunluğunu ve gürültü seviyesini anlık grafiklerle ekrana yansıtır.</p>' +
-                
-                '<h4>4. Ar-Ge ve Yasal Sorumluluk</h4>' +
-                '<p>Kablosuz haberleşme protokollerini incelemek ve donanım entegrasyonlarını test etmek amacıyla geliştirilmiş üst düzey bir laboratuvar aracıdır. Yalnızca yetkili olunan sistemlerin güvenlik testleri için tasarlanmış olup yasal kurallara tam bağlılıkla geliştirilmiştir.</p>', 
+                '<p>• <strong>Sniffing & Capture:</strong> Havada dolaşan Sub-GHz sinyallerini yakalayıp kaydetme.<br>' +
+                '• <strong>Emulation & Transmit:</strong> Kaydedilen sinyalleri kusursuz frekansta tekrar yayma.<br>' +
+                '• <strong>RSSI Spectrum:</strong> Ortamdaki radyo trafiğini canlı grafiklerle tarama.</p>', 
                 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800')">
                 
                 <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800" alt="ESP32 S3 Lilygo CC1101 Projesi" class="project-img-fluid">
                 <div class="project-info-fluid">
                     <h4>ESP32-S3 Lilygo T-Display + Bruce + CC1101</h4>
-                    <p>Sub-GHz RF analiz, Bruce Firmware entegrasyonu ve kurumsal kablosuz güvenlik laboratuvar aracı. Tam kapsamlı teknik rapor için tıklayın.</p>
+                    <p>Sub-GHz RF analiz, Bruce Firmware entegrasyonu ve yeraltı kablosuz güvenlik laboratuvar aracı. Detaylar için tıklayın.</p>
                     <div class="tags">
-                        <span class="tag">Flagship Product</span>
+                        <span class="tag">Flagship Hardware</span>
                         <span class="tag">Sub-GHz RF</span>
-                        <span class="tag">Technical Report</span>
+                        <span class="tag">Classified</span>
                     </div>
                 </div>
             </div>
@@ -731,7 +748,7 @@
 
         <!-- FOOTER -->
         <footer>
-            <p>&copy; 2026 Yusuf Alper | yusufalper.com.tr - Tüm hakları saklıdır. | Executive Security & R&D Directorate</p>
+            <p>&copy; 2026 Yusuf Alper | yusufalper.com.tr - Tüm hakları saklıdır. | Executive Underworld Directorate</p>
         </footer>
 
     </div>
@@ -740,19 +757,19 @@
     <div class="modal" id="projectModal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
-            <img src="" alt="Proje Detay Görseli" class="modal-img" id="modalImg" style="display:none;">
+            <img src="" alt="Detay Görseli" class="modal-img" id="modalImg" style="display:none;">
             <h3 class="modal-title" id="modalTitle">Başlık</h3>
             <div class="modal-desc" id="modalDesc">Açıklama buraya gelecek.</div>
             <div class="tags">
-                <span class="tag">High-End Security</span>
-                <span class="tag">Executive Grade</span>
+                <span class="tag">Underworld Security</span>
+                <span class="tag">Classified R&D</span>
             </div>
         </div>
     </div>
 
     <!-- SCRIPT -->
     <script>
-        // Sağ Üst 3 Çizgi Menü Kontrolü
+        // Sağ Üst Menü Kontrolü
         function toggleDrawer() {
             const drawer = document.getElementById('menuDrawer');
             const overlay = document.getElementById('menuOverlay');
@@ -760,7 +777,7 @@
             overlay.classList.toggle('active');
         }
 
-        // Müzik Çalar & Otomatik Başlatma Sistemi
+        // Müzik Çalar & Eray.mp3 Otomatik Başlatma
         const audio = document.getElementById('siteAudio');
         const trigger = document.getElementById('playTrigger');
         const symbol = document.getElementById('playSymbol');
@@ -772,33 +789,33 @@
                 audio.pause();
                 symbol.classList.remove('fa-pause');
                 symbol.classList.add('fa-play');
-                label.textContent = 'Müziği Başlat';
+                label.textContent = 'Oynat';
             } else {
                 audio.play().then(() => {
                     symbol.classList.remove('fa-play');
                     symbol.classList.add('fa-pause');
-                    label.textContent = 'Çalıyor...';
+                    label.textContent = 'Çalıyor';
                 }).catch(e => {
-                    console.log("Müzik çalma engeli:", e);
+                    console.log("Müzik engeli:", e);
                 });
             }
             isRunning = !isRunning;
         }
 
-        // Ziyaretçi ekrana ilk dokunduğu an müzik otomatik başlar
+        // Ziyaretçi ekrana ilk dokunduğu an Eray.mp3 otomatik başlar
         document.addEventListener('click', function initAudio() {
             if (!isRunning) {
                 audio.play().then(() => {
                     symbol.classList.remove('fa-play');
                     symbol.classList.add('fa-pause');
-                    label.textContent = 'Çalıyor...';
+                    label.textContent = 'Çalıyor';
                     isRunning = true;
                 }).catch(e => {});
             }
             document.removeEventListener('click', initAudio);
         }, { once: true });
 
-        // Modal Kontrolleri (Proje için)
+        // Modal Kontrolleri
         const modal = document.getElementById('projectModal');
         const modalImg = document.getElementById('modalImg');
         const modalTitle = document.getElementById('modalTitle');
@@ -812,7 +829,6 @@
             modal.style.display = 'flex';
         }
 
-        // Blog Modal Kontrolü
         function openBlogModal(title, desc) {
             modalTitle.textContent = title;
             modalDesc.innerHTML = '<p>' + desc + '</p>';
