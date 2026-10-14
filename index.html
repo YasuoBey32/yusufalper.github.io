@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #12090d; /* Zarif, yumuşak bordo/kahvemsi lüks koyu ton */
+            --bg-color: #12090d;
             --gold-glow: #f59e0b;
             --gold-light: #fde68a;
             --emerald-glow: #10b981;
@@ -30,7 +30,6 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
-            /* Örnek görsele benzer ferah, yumuşak ve akışkan gradient arka plan */
             background-image: 
                 radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
@@ -225,14 +224,13 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Ana İçerik Alanı - Kutulardan Arındırılmış Akışkan Tasarım */
+        /* Ana İçerik Alanı */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 120px 24px 80px;
         }
 
-        /* Ferah Hero Bölümü */
         .hero {
             text-align: center;
             margin-bottom: 70px;
@@ -247,6 +245,10 @@
             background: linear-gradient(135deg, var(--gold-glow), var(--emerald-glow));
             box-shadow: 0 0 35px rgba(245, 158, 11, 0.3);
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1017;
         }
 
         .avatar-box img {
@@ -255,7 +257,6 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: center top;
-            background: #000;
         }
 
         .hero h1 {
@@ -292,7 +293,6 @@
             color: var(--gold-light);
         }
 
-        /* Akışkan Bölüm Başlıkları (Örnek görsele benzer zarif stil) */
         .section-title {
             font-size: 2.2rem;
             font-weight: 800;
@@ -312,7 +312,6 @@
             line-height: 1.7;
         }
 
-        /* Ferah Akış Alanları (Kutu içine hapsedilmemiş, zarif metin akışları) */
         .content-block {
             margin-bottom: 60px;
             padding-bottom: 40px;
@@ -340,7 +339,6 @@
             margin-bottom: 20px;
         }
 
-        /* Blog Kartları (Ferah Stil) */
         .blog-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -388,7 +386,6 @@
             text-align: justify;
         }
 
-        /* Sosyal Butonlar */
         .socials {
             display: flex;
             justify-content: center;
@@ -417,7 +414,6 @@
             border-color: var(--gold-glow);
         }
 
-        /* Etiketler */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -436,7 +432,6 @@
             font-weight: 600;
         }
 
-        /* Proje Kartı (Ferah Stil) */
         .project-card-fluid {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(245, 158, 11, 0.25);
@@ -553,7 +548,6 @@
             font-size: 1.1rem;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 50px 20px;
@@ -591,9 +585,9 @@
         </ul>
     </div>
 
-    <!-- MÜZİK WIDGET'I -->
-    <div class="music-widget">
-        <button class="music-btn" id="playTrigger" onclick="toggleMusic()">
+    <!-- MÜZİK WIDGET'I (SAYFAYA İLK DOKUNUŞTA OTOMATİK BAŞLAR) -->
+    <div class="music-widget" onclick="toggleMusic()">
+        <button class="music-btn" id="playTrigger">
             <i class="fa-solid fa-play" id="playSymbol"></i>
         </button>
         <div class="music-info">
@@ -610,8 +604,8 @@
         <!-- HERO / KİŞİSEL PROFİL VE STATÜ -->
         <section class="hero" id="profile">
             <div class="avatar-box">
-                <!-- Profil fotoğrafın Base64 ile pırıl pırıl yükleniyor -->
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4QBaRXhpZgAATU0AKgAAAAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAABAAIAAAExAAIAAAARAAAATgAAAAAAAABIAAAAAQAAAEgAAAABPHNlcnZpY2Ugb24gc2l0ZSBvciB3ZWIgYnVzaW5lc3MgcG9ydGZvbGlvIEhUTUwgQ1TS4Wxlc3M=" alt="Yusuf Alper" onerror="this.src='65058.jpg'">
+                <!-- Profil fotoğrafı için güvenli alan -->
+                <img src="65058.jpg" alt="Yusuf Alper" onerror="this.style.display='none'">
             </div>
             <h1>Yusuf Alper</h1>
             <div class="terminal-badge">> root@yusufalper:~# executive_director & high-tier_r&d</div>
@@ -626,7 +620,7 @@
             </div>
         </section>
 
-        <!-- AKADEMİK EĞİTİM & FİNANSAL VİZYON (Ferah Akış) -->
+        <!-- AKADEMİK EĞİTİM & FİNANSAL VİZYON -->
         <div class="content-block" id="academic">
             <h2 class="section-title">Akademik Vizyon & Stratejik Altyapı</h2>
             <p class="section-subtitle">Küresel ticaretin dinamiklerini ve ekonomik entegrasyonu en üst düzeyde kavrama yolculuğum.</p>
@@ -670,7 +664,7 @@
             <h2 class="section-title">Mühendislik & Operasyonel Yetkinlikler</h2>
             <p class="section-subtitle">Donanım ve siber güvenlik alanında icra ettiğim ileri düzey teknik çalışmalar.</p>
 
-            <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik & Kali Linux Direktörlüğü</h3>
+            <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlık & Kali Linux Direktörlüğü</h3>
             <p>
                 Kali Linux tabanlı profesyonel sızma testleri (penetration testing), kurumsal zafiyet denetimleri ve gelişmiş ağ trafiği izleme operasyonlarını bizzat yönetiyorum. Şirketlerin dijital varlıklarını korumak, kritik açıklarını henüz sömürülmeden kapatmak ve üst düzey güvenlik mimarileri kurmak üzerine uzmanlaşıyorum.
             </p>
@@ -761,7 +755,7 @@
             overlay.classList.toggle('active');
         }
 
-        // Müzik Çalar
+        // Müzik Çalar & Otomatik Başlatma Sistemi
         const audio = document.getElementById('siteAudio');
         const trigger = document.getElementById('playTrigger');
         const symbol = document.getElementById('playSymbol');
@@ -780,12 +774,25 @@
                     symbol.classList.add('fa-pause');
                     label.textContent = 'Çalıyor...';
                 }).catch(e => {
-                    console.log("Müzik hatası:", e);
-                    alert("Tarayıcı müziği engelledi. Lütfen sayfada herhangi bir yere tıklayıp tekrar deneyin.");
+                    console.log("Müzik çalma engeli:", e);
                 });
             }
             isRunning = !isRunning;
         }
+
+        // Ziyaretçi siteye girdiği an herhangi bir yere dokunduğu/tıkladığı gibi müzik otomatik başlar!
+        document.addEventListener('click', function initAudio() {
+            if (!isRunning) {
+                audio.play().then(() => {
+                    symbol.classList.remove('fa-play');
+                    symbol.classList.add('fa-pause');
+                    label.textContent = 'Çalıyor...';
+                    isRunning = true;
+                }).catch(e => {});
+            }
+            // Bir kez çalıştıktan sonra dinleyiciyi kaldırıyoruz
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
 
         // Modal Kontrolleri (Proje için)
         const modal = document.getElementById('projectModal');
