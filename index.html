@@ -38,41 +38,46 @@
             min-height: 100vh;
         }
 
-        /* Üst Header ve Sağ Üst 3 Çizgi Menü */
+        /* Üst Header */
         header {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 30px;
+            padding: 10px 20px;
             z-index: 1500;
             background: rgba(18, 9, 13, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .header-logo {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--gold-light);
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .menu-toggle {
             background: rgba(245, 158, 11, 0.1);
             border: 1px solid rgba(245, 158, 11, 0.3);
             color: var(--gold-light);
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             transition: 0.3s;
         }
 
@@ -186,6 +191,7 @@
             gap: 14px;
             z-index: 1000;
             box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+            cursor: pointer;
         }
 
         .music-btn {
@@ -228,7 +234,7 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 120px 24px 80px;
+            padding: 130px 24px 80px;
         }
 
         .hero {
@@ -561,7 +567,7 @@
 </head>
 <body>
 
-    <!-- ÜST HEADER & SAĞ ÜST 3 ÇİZGİ MENÜ -->
+    <!-- ÜST HEADER -->
     <header>
         <div class="header-logo">yusufalper.com.tr</div>
         <button class="menu-toggle" onclick="toggleDrawer()">
@@ -585,17 +591,17 @@
         </ul>
     </div>
 
-    <!-- MÜZİK WIDGET'I (SAYFAYA İLK DOKUNUŞTA OTOMATİK BAŞLAR) -->
+    <!-- MÜZİK WIDGET'I (Olabilir.mp3 Bağlandı) -->
     <div class="music-widget" onclick="toggleMusic()">
         <button class="music-btn" id="playTrigger">
             <i class="fa-solid fa-play" id="playSymbol"></i>
         </button>
         <div class="music-info">
-            <span class="music-title">Executive Lux Ambient</span>
+            <span class="music-title">Era7Capone - OLABİLİR</span>
             <span class="music-status" id="musicLabel">Müziği Başlat</span>
         </div>
         <audio id="siteAudio" loop>
-            <source src="https://www.bensound.com/bensound-music/bensound-cyberpunk.mp3" type="audio/mpeg">
+            <source src="Olabilir.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -604,7 +610,6 @@
         <!-- HERO / KİŞİSEL PROFİL VE STATÜ -->
         <section class="hero" id="profile">
             <div class="avatar-box">
-                <!-- Profil fotoğrafı için güvenli alan -->
                 <img src="65058.jpg" alt="Yusuf Alper" onerror="this.style.display='none'">
             </div>
             <h1>Yusuf Alper</h1>
@@ -664,7 +669,7 @@
             <h2 class="section-title">Mühendislik & Operasyonel Yetkinlikler</h2>
             <p class="section-subtitle">Donanım ve siber güvenlik alanında icra ettiğim ileri düzey teknik çalışmalar.</p>
 
-            <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlık & Kali Linux Direktörlüğü</h3>
+            <h3><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik & Kali Linux Direktörlüğü</h3>
             <p>
                 Kali Linux tabanlı profesyonel sızma testleri (penetration testing), kurumsal zafiyet denetimleri ve gelişmiş ağ trafiği izleme operasyonlarını bizzat yönetiyorum. Şirketlerin dijital varlıklarını korumak, kritik açıklarını henüz sömürülmeden kapatmak ve üst düzey güvenlik mimarileri kurmak üzerine uzmanlaşıyorum.
             </p>
@@ -780,7 +785,7 @@
             isRunning = !isRunning;
         }
 
-        // Ziyaretçi siteye girdiği an herhangi bir yere dokunduğu/tıkladığı gibi müzik otomatik başlar!
+        // Ziyaretçi ekrana ilk dokunduğu an müzik otomatik başlar
         document.addEventListener('click', function initAudio() {
             if (!isRunning) {
                 audio.play().then(() => {
@@ -790,7 +795,6 @@
                     isRunning = true;
                 }).catch(e => {});
             }
-            // Bir kez çalıştıktan sonra dinleyiciyi kaldırıyoruz
             document.removeEventListener('click', initAudio);
         }, { once: true });
 
