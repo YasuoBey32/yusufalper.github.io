@@ -73,7 +73,6 @@
             letter-spacing: 1px;
         }
 
-        /* Kibar ve Kompakt Ziyaretçi Sayacı Rozeti */
         .visitor-counter {
             display: flex;
             align-items: center;
@@ -210,7 +209,7 @@
             display: block;
         }
 
-        /* Küçültülmüş Kompakt Müzik Widget'ı (Happy.mp3) */
+        /* Müzik Widget'ı (Happy.mp3) */
         .music-widget {
             position: fixed;
             bottom: 20px;
@@ -325,20 +324,155 @@
             border-radius: 50px;
             font-size: 0.9rem;
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             box-shadow: 0 0 15px rgba(0, 255, 102, 0.1);
         }
 
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.9;
-            text-align: justify;
-            margin-bottom: 25px;
+        /* PROFESYONEL OPERASYONEL CV KARTI */
+        .cv-card {
+            background: rgba(5, 8, 17, 0.85);
+            border: 1px solid var(--border-mafia);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: left;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero p strong {
+        .cv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold-glow), var(--hacker-green));
+        }
+
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(217, 119, 6, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .cv-title {
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cv-title i {
+            color: var(--gold-glow);
+        }
+
+        .cv-status-badge {
+            background: rgba(217, 119, 6, 0.12);
+            border: 1px solid rgba(217, 119, 6, 0.3);
             color: var(--gold-light);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .cv-text {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .cv-text strong {
+            color: var(--gold-light);
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .cv-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .cv-item h5 {
+            color: var(--hacker-green);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cv-item p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .socials a {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-mafia);
+            color: var(--text-main);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            background: var(--gold-glow);
+            color: #020408;
+            border-color: var(--gold-light);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tag {
+            background: rgba(217, 119, 6, 0.1);
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            color: var(--gold-light);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
         }
 
         .section-title {
@@ -433,53 +567,6 @@
             line-height: 1.8;
             margin-bottom: 12px;
             text-align: justify;
-        }
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .socials a {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-mafia);
-            color: var(--text-main);
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .socials a:hover {
-            background: var(--gold-glow);
-            color: #020408;
-            border-color: var(--gold-light);
-            box-shadow: 0 0 15px var(--gold-glow);
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .tag {
-            background: rgba(217, 119, 6, 0.1);
-            border: 1px solid rgba(217, 119, 6, 0.3);
-            color: var(--gold-light);
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
         }
 
         .project-card-fluid {
@@ -671,7 +758,7 @@
 </head>
 <body>
 
-    <!-- ÜST HEADER (Ziyaretçi Sayacı) -->
+    <!-- ÜST HEADER -->
     <header>
         <div class="header-left">
             <div class="header-logo">yusufalper.com.tr</div>
@@ -702,7 +789,7 @@
         </ul>
     </div>
 
-    <!-- KÜÇÜLTÜLMÜŞ KOMPAKT MÜZİK WIDGET'I (Happy.mp3 Aktif) -->
+    <!-- MÜZİK WIDGET'I (Happy.mp3) -->
     <div class="music-widget" onclick="toggleMusic()">
         <button class="music-btn" id="playTrigger">
             <i class="fa-solid fa-play" id="playSymbol"></i>
@@ -718,16 +805,50 @@
 
     <div class="container">
         
-        <!-- HERO / KİŞİSEL PROFİL VE STATÜ -->
+        <!-- HERO / KİŞİSEL PROFİL VE CV KARTI -->
         <section class="hero" id="profile">
             <div class="avatar-box">
                 <img src="Screenshot_20261015_004144_Gallery.jpg" alt="Yusuf Alper" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400'">
             </div>
             <h1>Yusuf Alper</h1>
             <div class="terminal-badge">> root@underworld:~# executive_director & r&d_mafia</div>
-            <p>
-                Bursa doğumlu, Afyonkarahisar merkezli küresel vizyona sahip; yer altı dünyasının stratejik disiplini ile siber güvenlik teknolojilerini aynı masada buluşturan bir <strong>Ar-Ge ve Siber Güvenlik Lideriyim</strong>. Afyon Kocatepe Üniversitesi Uluslararası Ticaret ve Finansman bölümünde (İngilizce Hazırlık) yürüttüğüm operasyonel süreç; bana sadece sermaye akışlarının matematiğini değil, aynı zamanda küresel ağları yönetme iradesini kazandırmaktadır.
-            </p>
+
+            <!-- PROFESYONEL DERLİ TOPLU CV KARTI -->
+            <div class="cv-card">
+                <div class="cv-header">
+                    <div class="cv-title">
+                        <i class="fa-solid fa-id-card"></i> Operasyonel Özgeçmiş & Manifest
+                    </div>
+                    <div class="cv-status-badge">ACTIVE RECON & R&D</div>
+                </div>
+
+                <p class="cv-text">
+                    Adım <strong>Yusuf Alper</strong>, Bursa doğumluyum. <strong>2017-2018</strong> yıllarında yazılım, teknoloji ve kodlamaya merak saldım; o günden beri kendimi sürekli geliştirdim ve alanımda birçok sertifikaya sahip oldum. <strong>Kali Linux</strong> yazılımını aktif olarak kullanıyor, siber güvenlik alanında yetkinliklerimi derinleştiriyorum.
+                </p>
+
+                <p class="cv-text">
+                    Bursa’dan 1 yıl mezuna kalarak gösterdiğim sıkı disiplinli çalışma süreci sonucunda kazandığım <strong>Uluslararası Ticaret ve Finansman</strong> bölümünü Afyon’da okuyorum. Dil alanında küresel çapta yetkinlik kazanmak adına İngilizce hazırlık bölümünü tercih ettim. Şu an 19 yaşında; düzenli egzersiz, spor ve sağlıklı bir yaşam disipliniyle hazırlık eğitimimi sürdürüyorum.
+                </p>
+
+                <p class="cv-text" style="margin-bottom: 0;">
+                    Elinde bana ait olan sertifikaları isimleriyle gösterebilirim. Normal bir insan değil; hayata boşa geçmiş bir ömür olmaktansa, başarıyı iliklerime kadar hissedip <strong>vatanıma katkıda bulunmayı</strong> tercih eden bir vizyonla ilerliyorum.
+                </p>
+
+                <div class="cv-grid">
+                    <div class="cv-item">
+                        <h5><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik</h5>
+                        <p>Kali Linux, Ağ Analizi & Sızma Testleri, Donanım R&D</p>
+                    </div>
+                    <div class="cv-item">
+                        <h5><i class="fa-solid fa-graduation-cap"></i> Akademik & Dil</h5>
+                        <p>AKÜ Uluslararası Ticaret ve Finansman (İngilizce Hazırlık)</p>
+                    </div>
+                    <div class="cv-item">
+                        <h5><i class="fa-solid fa-dumbbell"></i> Yaşam Disiplini</h5>
+                        <p>19 Yaş, Düzenli Fitness & Yüzme, Sağlıklı Yaşam</p>
+                    </div>
+                </div>
+            </div>
 
             <div class="socials">
                 <a href="https://github.com/YasuoBey32" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
