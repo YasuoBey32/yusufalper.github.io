@@ -210,7 +210,7 @@
             display: block;
         }
 
-        /* Küçültülmüş Kompakt Müzik Widget'ı */
+        /* Küçültülmüş Kompakt Müzik Widget'ı (Happy.mp3) */
         .music-widget {
             position: fixed;
             bottom: 20px;
@@ -671,7 +671,7 @@
 </head>
 <body>
 
-    <!-- ÜST HEADER (Ziyaretçi Sayacı Eklendi) -->
+    <!-- ÜST HEADER (Ziyaretçi Sayacı) -->
     <header>
         <div class="header-left">
             <div class="header-logo">yusufalper.com.tr</div>
@@ -702,17 +702,17 @@
         </ul>
     </div>
 
-    <!-- KÜÇÜLTÜLMÜŞ KOMPAKT MÜZİK WIDGET'I (Eray.mp3 Aktif) -->
+    <!-- KÜÇÜLTÜLMÜŞ KOMPAKT MÜZİK WIDGET'I (Happy.mp3 Aktif) -->
     <div class="music-widget" onclick="toggleMusic()">
         <button class="music-btn" id="playTrigger">
             <i class="fa-solid fa-play" id="playSymbol"></i>
         </button>
         <div class="music-info">
-            <span class="music-title">Eray.mp3</span>
+            <span class="music-title">Happy.mp3</span>
             <span class="music-status" id="musicLabel">Oynat</span>
         </div>
         <audio id="siteAudio" loop>
-            <source src="Eray.mp3" type="audio/mpeg">
+            <source src="Happy.mp3" type="audio/mpeg">
         </audio>
     </div>
 
@@ -872,10 +872,10 @@
 
     <!-- SCRIPT -->
     <script>
-        // Ziyaretçi Sayacı Simülasyonu (Tarayıcı hafızasına göre kibarca artar)
+        // Ziyaretçi Sayacı Simülasyonu
         let visits = localStorage.getItem('underworld_visits');
         if (!visits) {
-            visits = 1428; // Başlangıç tabanı
+            visits = 1428;
         } else {
             visits = parseInt(visits) + 1;
         }
@@ -890,7 +890,7 @@
             overlay.classList.toggle('active');
         }
 
-        // Müzik Çalar & Eray.mp3 Otomatik Başlatma
+        // Müzik Çalar & Happy.mp3 Otomatik Başlatma
         const audio = document.getElementById('siteAudio');
         const trigger = document.getElementById('playTrigger');
         const symbol = document.getElementById('playSymbol');
@@ -915,7 +915,7 @@
             isRunning = !isRunning;
         }
 
-        // Ziyaretçi ekrana ilk dokunduğu an Eray.mp3 otomatik başlar
+        // Ziyaretçi ekrana ilk dokunduğu an Happy.mp3 otomatik başlar
         document.addEventListener('click', function initAudio() {
             if (!isRunning) {
                 audio.play().then(() => {
