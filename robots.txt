@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /includes/
+Disallow: /storage/
+Disallow: /hata/
+Disallow: /cevrimdisi.html
+
+Sitemap: https://yusufalper.com.tr/sitemap.xml
