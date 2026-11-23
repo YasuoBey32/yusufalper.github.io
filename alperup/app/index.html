@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0A0A0B" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AlperUp" />
+  <meta name="description" content="Yüz analizi ve bilime dayalı kişisel glow up planı. Fotoğrafın cihazından çıkmaz." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <title>AlperUp</title>
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="app"></div>
+  <nav id="tabbar" class="hidden">
+    <button data-tab="today"><span class="ti">◎</span><span>Bugün</span></button>
+    <button data-tab="plan"><span class="ti">☰</span><span>Plan</span></button>
+    <button data-tab="analysis"><span class="ti">◈</span><span>Analiz</span></button>
+    <button data-tab="me"><span class="ti">●</span><span>Profil</span></button>
+  </nav>
+  <div id="sheet" class="sheet hidden"></div>
+  <script type="module" src="js/app.js"></script>
+  <script>
+    // Web (iPhone / browser) only: offline cache + open outside links in a new tab
+    if (!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform())) {
+      if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(function () {});
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
+        if (a.origin !== location.origin) { e.preventDefault(); window.open(a.href, '_blank', 'noopener'); }
+      });
+    }
+  </script>
+</body>
+</html>

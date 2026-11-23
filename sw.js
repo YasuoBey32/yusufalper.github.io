@@ -1,6 +1,6 @@
 /* Yusuf Alper | Çevrimdışı katman. Tüm tasarım özel lisanslıdır. */
 'use strict';
-var VERSION = 'ya-v3';
+var VERSION = 'ya-v4';
 var STATIC = VERSION + '-static';
 var PAGES = VERSION + '-pages';
 var OFFLINE = '/cevrimdisi.html';
@@ -19,7 +19,7 @@ self.addEventListener('install', function (e) {
 
 self.addEventListener('activate', function (e) {
   e.waitUntil(caches.keys().then(function (keys) {
-    return Promise.all(keys.filter(function (k) { return k.indexOf(VERSION) !== 0; }).map(function (k) { return caches.delete(k); }));
+    return Promise.all(keys.filter(function (k) { return k.indexOf(VERSION) !== 0 && k.indexOf('alperup-') !== 0; }).map(function (k) { return caches.delete(k); }));
   }).then(function () { return self.clients.claim(); }));
 });
 
@@ -28,6 +28,7 @@ self.addEventListener('fetch', function (e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
   if (url.origin !== location.origin) return;
+  if (url.pathname.indexOf('/alperup/app/') === 0 || /\.apk$/.test(url.pathname)) return;
   if (url.pathname.indexOf('/assets/video/') === 0 && /\.(mp4|webm)$/.test(url.pathname)) return;
 
   if (req.mode === 'navigate') {
