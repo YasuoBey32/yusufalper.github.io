@@ -163,11 +163,16 @@ body.app .apphead{display:flex}
     document.getElementById('chips').style.display = 'none';
     add('u', esc(text)); q.value = ''; grow();
     hist.push({ role: 'user', content: text });
+    var quick = text.toLocaleLowerCase('tr').replace(/[\s!?.,]+$/, '');
+    var QA = { 'merhaba': 'Merhaba! Ben Alper AI. Ne sormak istersin?', 'selam': 'Selam! Ne sormak istersin?', 'naber': 'İyiyim, teşekkür ederim! Sana nasıl yardımcı olabilirim?', 'nasılsın': 'İyiyim, teşekkür ederim! Sana nasıl yardımcı olabilirim?', 'günaydın': 'Günaydın! Bugün ne öğrenmek istersin?', 'teşekkürler': 'Rica ederim!', 'teşekkür ederim': 'Rica ederim!', 'sağol': 'Rica ederim!', 'sen kimsin': 'Ben Alper AI. Yusuf Alper tarafından sıfırdan geliştirilen bir yapay zekâ asistanıyım.' };
+    if (QA[quick]) { add('a', esc(QA[quick])); hist.push({ role: 'assistant', content: QA[quick] }); return; }
     var box = add('a', '<span class="typing">Düşünüyorum…</span>'), out = '', sources = null, slow;
+    var ctl = window.AbortController ? new AbortController() : null;
+    setTimeout(function () { if (!out && ctl) ctl.abort(); }, 75000);
     send.disabled = true;
     slow = setTimeout(function () { if (!out) box.innerHTML = '<span class="typing">Sunucu uyanıyor, bu ilk seferde 30-60 saniye sürebilir…</span>'; }, 6000);
     fetch(API + '/v1/chat/completions', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: ctl ? ctl.signal : undefined,
       body: JSON.stringify({ model: 'alper-ai', stream: true, messages: hist.slice(-8) })
     }).then(function (r) {
       if (!r.ok || !r.body) throw new Error('HTTP ' + r.status);
@@ -196,7 +201,7 @@ body.app .apphead{display:flex}
       if (sources && sources.length) h += '<span class="src">' + sources.slice(0, 3).map(function (s, i) { return '[' + (i + 1) + '] ' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title || s.url) + '</a>' : esc(s.title || '')); }).join(' · ') + '</span>';
       box.innerHTML = h; hist.push({ role: 'assistant', content: out });
     }).catch(function () {
-      box.innerHTML = 'Sunucuya ulaşamadım. İnternetini kontrol edip tekrar dener misin?';
+      box.innerHTML = 'Sunucu şu an yanıt vermiyor. Biraz sonra tekrar sor; uygulamada ise cevap telefondan gelir.';
       hist.pop();
     }).then(function () { clearTimeout(slow); send.disabled = false; log.scrollTop = log.scrollHeight; });
   }
