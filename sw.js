@@ -1,6 +1,6 @@
 /* Yusuf Alper | Çevrimdışı katman. Tüm tasarım özel lisanslıdır. */
 'use strict';
-var VERSION = 'ya-v1';
+var VERSION = 'ya-v2';
 var STATIC = VERSION + '-static';
 var PAGES = VERSION + '-pages';
 var OFFLINE = '/cevrimdisi.html';
